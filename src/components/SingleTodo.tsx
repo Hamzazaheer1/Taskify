@@ -43,10 +43,14 @@ const SingleTodo = ({ todo, todos, setTodos }: Props) => {
   return (
     <form
       onSubmit={(e) => handleEdit(e, todo.id)}
-      className="flex w-[29.5%] rounded-md p-5 mt-4 bg-[url(https://img.freepik.com/free-photo/crumpled-yellow-paper-background-close-up_60487-2390.jpg?size=626&ext=jpg)]"
+      className="flex items-center w-[29.5%] rounded-md p-5 mt-4 bg-[url(https://img.freepik.com/free-photo/crumpled-yellow-paper-background-close-up_60487-2390.jpg?size=626&ext=jpg)]"
     >
       {edit ? (
-        <input value={editTodo} onChange={(e) => setEditTodo(e.target.value)} />
+        <input
+          value={editTodo}
+          onChange={(e) => setEditTodo(e.target.value)}
+          className="w-full px-3 py-2 border rounded-md"
+        />
       ) : todo.isDone ? (
         <s className="flex-1 p-1 border-none text-xl focus:outline-none">
           {todo.todo}
@@ -57,7 +61,7 @@ const SingleTodo = ({ todo, todos, setTodos }: Props) => {
         </span>
       )}
 
-      <div className="">
+      <div className="flex">
         <span
           className="ml-3 text-2xl cursor-pointer"
           onClick={() => {
@@ -66,19 +70,19 @@ const SingleTodo = ({ todo, todos, setTodos }: Props) => {
             }
           }}
         >
-          <AiFillEdit />
+          <AiFillEdit className="hover:scale-110 duration-200" />
         </span>
         <span
           className="ml-3 text-2xl cursor-pointer"
           onClick={() => handleDelete(todo.id)}
         >
-          <AiFillDelete />
+          <AiFillDelete className="hover:scale-110 duration-200" />
         </span>
         <span
           className="ml-3 text-2xl cursor-pointer"
           onClick={() => handleDone(todo.id)}
         >
-          <MdDone />
+          <MdDone className="hover:scale-110 duration-200" />
         </span>
       </div>
     </form>
